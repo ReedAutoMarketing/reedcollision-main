@@ -41,6 +41,9 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
   <!-- GTM/GA4 Commented Out (Uncomment to enable) -->
   <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
   <!-- <script>
@@ -57,61 +60,67 @@
 
 <body class="font-inter">
 
-  <nav class="bg-slate-50 text-gray-500 p-4">
+  <nav class="text-gray-500 p-4">
     <div class="container mx-auto flex items-center justify-between">
-      <a href="./index.html" class="ml-0"><img src="./assets/img/logo.png" class="w-1/3" /></a>
-      <ul class="flex space-x-4 mr-0">
+      <!-- Logo: Adjusts size depending on screen -->
+      <a href="./index.html">
+        <img src="./assets/img/logo.png" class="h-auto w-48 sm:w-48 md:w-1/3" style="max-height: 199px;" alt="Reed Collision Center Logo"/>
+      </a>
+      <!-- Mobile Menu Button -->
+      <button id="menu-toggle" class="bg-gradient-to-r from-amber-300 to-orange-500 p-2 rounded">
+        <div class="bg-white h-1 w-6 mb-1"></div>
+        <div class="bg-white h-1 w-6 mb-1"></div>
+        <div class="bg-white h-1 w-6"></div>
+      </button>
+      <!-- Navigation Menu: Hidden by default, shown on button click -->
+      <ul id="menu" class="hidden space-y-4 absolute top-0 right-0 mt-14 mr-4 bg-gray-800 text-white p-4 rounded">
         <li><a href="./index.html" class="active:text-blue hover:text-gray-300 font-semibold">Home</a></li>
-        <li><a href="#" class="hover:text-gray-300 font-semibold">About</a></li>
-        <li><a href="#" class="hover:text-gray-300">Contact</a></li>
-        <!-- Additional menu items removed for brevity -->
+        <li><a href="#locations" class="hover:text-gray-300 font-semibold">Locations</a></li>
       </ul>
     </div>
   </nav>
 
-
-  <main class="bg-slate-900">
-
-
-    <div class="relative bg-cover bg-center h-[400px] bg-slate-900">
-      <div class="absolute inset-0 flex items-center justify-start p-10 bg-slate-900 bg-opacity-50">
-        <div class="container mx-auto flex items-center justify-between">
-          <div class="w-1/3">
-            <h1 class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400">
+  <main class="">
+    <div class="bg-gradient-to-r from-slate-900 to-slate-50">
+      <div class="container mx-auto">
+        <div class="flex flex-col-reverse lg:flex-row items-center">
+    
+          <!-- Text and CTA -->
+          <div class="w-full lg:w-1/3 text-center lg:text-start p-10">
+            <h1 class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-300 to-orange-500">
               Reed Collision Center</h1>
-            <p class="text-xl mt-4 text-white">Gold Class Certified Shops Located in Overland Park, Kansas City or St.
+            <p class="text-xl mt-4 text-white mb-10">Gold Class Certified Shops Located in Overland Park, Kansas City or St.
               Joseph!</p>
-            <!-- Container for CTA -->
-            <div class="container text-center py-8">
-              <!-- CTA Button -->
-              <a href="#locations" class="text-white bg-blue-500 p-4 rounded hover:bg-blue-700">
+    
+            <!-- CTA Button -->
+            <div class="mt-5">
+              <a href="#locations" 
+              class="text-white text-xl bg-gradient-to-r from-orange-400 to-orange-600 p-4 rounded hover:from-orange-600 hover:to-orange-400">
                 See Locations
               </a>
             </div>
           </div>
-          <div class="relative w-2/3" style="height: 350px;">
-            <img src="./assets/img/heroImage.jpg" class="absolute w-full h-full object-cover shadow-lg rounded">
-            <div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
-              <img src="./assets/img/goldClass.png" class="w-1/4">
-              <img src="./assets/img/reedBrands.png" class="w-full p-4 items-end">
-            </div>
+    
+          <!-- Image -->
+          <div class="w-full lg:w-2/3 mt-10 mb-10">
+            <img src="./assets/img/heroImg.png" class="w-full object-cover shadow-lg rounded">
           </div>
         </div>
       </div>
-      <img src="./assets/img/blurOne.png" class="absolute bottom-20 h-full left-0 object-cover">
-      <img src="./assets/img/blurTwo.png" class="absolute top-20 h-full right-0 object-cover opacity-50">
     </div>
+
     <!-- Additional Content Below Hero -->
-    <section class="bg-slate-900 text-slate-50 p-10">
+    <section class="text-slate-900 p-10 pb-0 bg-slate-50">
 
       <!-- Content Section Below Hero -->
       <div class="container mx-auto p-4 pt-5">
 
-        <div class="flex flex-wrap justify-around">
+        <div class="flex flex-wrap text-center justify-around">
           <!-- Certified Repairs -->
           <div class="w-full md:w-1/4 p-4">
             <i class="fas fa-certificate text-2xl mb-4"></i>
-            <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-neutral-100">Certified Repairs</h2>
+            <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400">
+              Certified Repairs</h2>
             <p class="mt-2 text-lg">Choosing a certified facility assures that the auto body shop is adhering to the
               strict standards set in place by the manufacturer.</p>
           </div>
@@ -119,7 +128,8 @@
           <!-- Warranty -->
           <div class="w-full md:w-1/4 p-4">
             <i class="fas fa-shield-alt text-2xl mb-4"></i>
-            <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-neutral-100">Warranty</h2>
+            <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400">
+              Warranty</h2>
             <p class="mt-2 text-lg">All repairs come with a Limited Lifetime Warranty. We stand behind everything we do.
             </p>
           </div>
@@ -127,87 +137,112 @@
           <!-- Technology -->
           <div class="w-full md:w-1/4 p-4">
             <i class="fas fa-microchip text-2xl mb-4"></i>
-            <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-neutral-100">Technology</h2>
+            <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400">
+              Technology</h2>
             <p class="mt-2 text-lg">Today’s advanced vehicles are engineered with essentially no margin for error.</p>
           </div>
 
           <!-- Structural Straightening -->
           <div class="w-full md:w-1/4 p-4">
             <i class="fas fa-tools text-2xl mb-4"></i>
-            <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-neutral-100">Structural Straightening</h2>
+            <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400">
+              Structural Straightening</h2>
             <p class="mt-2 text-lg">Our tools and equipment are well known for their high quality and accuracy.</p>
           </div>
         </div>
       </div>
-      <hr>
     </section>
     <!-- Locations Row -->
-    <section id="locations">
-      <div class="container text-center bg-slate-900 mx-auto p-4 pt-10">
-          <h1 class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400">
-              Locations</h1>
-          <div class="flex flex-wrap justify-around text-slate-50">
-              <!-- Overland Park Collision Center -->
-              <div class="w-full md:w-1/3 p-4">
-                  <a href="https://www.op.reedcollision.com/" target="_blank">
-                      <img src="./assets/img/opCollision.jpg" alt="Overland Park Collision Center"
-                          class="w-full h-48 object-cover mb-4">
-                      <h2 class="text-2xl font-semibold">Overland Park Collision Center</h2>
-                  </a>
-                  <address>
-                      <a href="https://goo.gl/maps/YAMCyANUPgQEai3c6" target="_blank">8135 Lenexa Dr <br> Lenexa, 66214</a>
-                  </address>
-                  <p>Phone: 913.383.4484</p>
-                  <p>
-                      Hours:<br>
-                      Monday – Friday 7:30am – 6:00pm<br>
-                      Saturday – Sunday Closed
-                  </p>
-              </div>
-  
-              <!-- North Kansas City Collision Center -->
-              <div class="w-full md:w-1/3 p-4">
-                  <a href="https://www.kc.reedcollision.com/" target="_blank">
-                      <img src="./assets/img/nkcCollision.jpg" alt="North Kansas City Collision Center"
-                          class="w-full h-48 object-cover mb-4">
-                      <h2 class="text-2xl font-semibold">North Kansas City Collision Center</h2>
-                  </a>
-                  <address>
-                      <a href="https://goo.gl/maps/JTTkiBDzQhKKqSx57" target="_blank">9550 NW Prairie View Rd <br> Kansas City, MO 64153</a>
-                  </address>
-                  <p>Phone: 816.437.6700</p>
-                  <p>
-                      Hours:<br>
-                      Monday – Friday 7:00am – 6:00pm<br>
-                      Saturday 8:00am – 12:00pm<br>
-                      Sunday Closed
-                  </p>
-              </div>
-  
-              <!-- St. Joseph Collision Center -->
-              <div class="w-full md:w-1/3 p-4">
-                  <a href="https://www.stj.reedcollision.com/" target="_blank">
-                      <img src="./assets/img/stjCollision.jpg" alt="St. Joseph Collision Center"
-                          class="w-full h-48 object-cover mb-4">
-                      <h2 class="text-2xl font-semibold">St. Joseph Collision Center</h2>
-                  </a>
-                  <address>
-                      <a href="https://goo.gl/maps/wvuqxpjBDQEvq2Q49" target="_blank">3921 Frederick Ave Suite 2 <br> St Joseph, MO 64506</a>
-                  </address>
-                  <p>Phone: 816.232.7704</p>
-                  <p>
-                      Hours:<br>
-                      Monday – Friday 7:30am – 6:00pm<br>
-                      Saturday 8:00am – 12:00pm<br>
-                      Sunday Closed
-                  </p>
-              </div>
+    <section id="locations" class="bg-slate-50 text-slate-900">
+      <div class="container text-center mx-auto p-4 pt-10">
+        <h1 class="text-4xl mb-5 font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-300 to-orange-500">
+          Reed Automotive Collision Center Locations</h1>
+        <div class="flex flex-wrap justify-around text-slate-900">
+          <!-- Overland Park Collision Center -->
+          <div class="w-full md:w-1/3 p-4">
+            <a href="https://www.op.reedcollision.com/" target="_blank">
+              <h2
+              class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400 mb-2">
+              Overland Park Collision Center</h2>
+              <img src="./assets/img/opCollision.jpg" alt="Overland Park Collision Center"
+                class="w-full h-48 object-cover mb-4">
+            </a>
+            <address>
+              <a href="https://goo.gl/maps/YAMCyANUPgQEai3c6" target="_blank">8135 Lenexa Dr <br> Lenexa, 66214</a>
+            </address>
+            <p>Phone: 913.383.4484</p>
+            <p>
+              Hours:<br>
+              Monday – Friday 7:30am – 6:00pm<br>
+              Saturday – Sunday Closed
+            </p>
           </div>
-      </div>
-  </section>
-  
-  </main>
 
+          <!-- North Kansas City Collision Center -->
+          <div class="w-full md:w-1/3 p-4">
+            <a href="https://www.kc.reedcollision.com/" target="_blank">
+              <h2
+              class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400 mb-2">
+              North Kansas City Collision Center</h2>
+              <img src="./assets/img/nkcCollision.jpg" alt="North Kansas City Collision Center"
+                class="w-full h-48 object-cover mb-4">
+            </a>
+            <address>
+              <a href="https://goo.gl/maps/JTTkiBDzQhKKqSx57" target="_blank">9550 NW Prairie View Rd <br> Kansas City,
+                MO 64153</a>
+            </address>
+            <p>Phone: 816.437.6700</p>
+            <p>
+              Hours:<br>
+              Monday – Friday 7:00am – 6:00pm<br>
+              Saturday 8:00am – 12:00pm<br>
+              Sunday Closed
+            </p>
+          </div>
+
+          <!-- St. Joseph Collision Center -->
+          <div class="w-full md:w-1/3 p-4">
+            <a href="https://www.stj.reedcollision.com/" target="_blank">
+              <h2
+                class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400 mb-2">
+                St. Joseph Collision Center</h2>
+              <img src="./assets/img/stjCollision.jpg" alt="St. Joseph Collision Center"
+                class="w-full h-48 object-cover mb-4">
+            </a>
+            <address>
+              <a href="https://goo.gl/maps/wvuqxpjBDQEvq2Q49" target="_blank">3921 Frederick Ave Suite 2 <br> St Joseph,
+                MO 64506</a>
+            </address>
+            <p>Phone: 816.232.7704</p>
+            <p>
+              Hours:<br>
+              Monday – Friday 7:30am – 6:00pm<br>
+              Saturday 8:00am – 12:00pm<br>
+              Sunday Closed
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <script>
+    // JavaScript to toggle mobile menu
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+  
+    menuToggle.addEventListener("click", function () {
+      menu.classList.toggle("hidden");
+    });
+  </script>
+  <script>
+    // JavaScript to toggle mobile menu with fade effect
+    $(document).ready(function(){
+      $("#menu-toggle").click(function(){
+        $("#menu").fadeToggle(300); // 300 milliseconds for fade duration
+      });
+    });
+  </script>
 </body>
 
 </html>
